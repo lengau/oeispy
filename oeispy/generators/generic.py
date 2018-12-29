@@ -3,6 +3,7 @@
 NOTE: If a generic generator was provided on the OEIS website, it should be
 placed in `from_site.py` instead.
 """
+import itertools
 
 
 def lucas(a, b):
@@ -16,3 +17,13 @@ def lucas(a, b):
     while True:
         yield b
         a, b = b, a + b
+
+
+def with_getter(getter, offset):
+    """A generic generator for any sequence with a getter.
+
+    :param getter: The getter function to use.
+    :param the offset for this sequence. (Normally 0, but specified by OEIS)
+    """
+    for i in itertools.count(offset):
+        yield getter(i)

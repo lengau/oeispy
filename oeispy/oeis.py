@@ -40,8 +40,8 @@ class A:
         self.generator = generators.GENERATORS.get(number)
         self._get = getters.GETTERS.get(number)
         if self._get is not None and self.generator is None:
-            def generator():
-                for i in itertools.count(self.offset)
+            self.generator = generators.generic.with_getter(
+                self._get, self.offset)
 
     @property
     def has_getter(self) -> bool:
