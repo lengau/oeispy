@@ -39,6 +39,9 @@ class A:
         self.data = [int(i) for i in self.entry['data'].split(',')]
         self.generator = generators.GENERATORS.get(number)
         self._get = getters.GETTERS.get(number)
+        if self._get is not None and self.generator is None:
+            def generator():
+                for i in itertools.count(self.offset)
 
     @property
     def has_getter(self) -> bool:
