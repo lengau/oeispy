@@ -40,7 +40,7 @@ class A:
         self.generator = generators.GENERATORS.get(number)
         self._get = getters.GETTERS.get(number)
         if self._get is not None and self.generator is None:
-            self.generator = generators.generic.with_getter(
+            self.generator = lambda: generators.generic.with_getter(
                 self._get, self.offset)
 
     @property
