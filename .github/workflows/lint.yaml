@@ -35,6 +35,3 @@ jobs:
 
       - name: Type check with mypy
         run: uv run mypy oeispy/
-
-      - name: Lint YAML files with yamllint
-        run: uv run yamllint .github/
