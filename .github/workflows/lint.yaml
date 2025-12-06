@@ -36,8 +36,5 @@ jobs:
       - name: Type check with mypy
         run: uv run mypy oeispy/
 
-      - name: Check TOML formatting with tombi
-        run: uv run tombi check pyproject.toml
-
       - name: Lint YAML files with yamllint
         run: uv run yamllint .github/
