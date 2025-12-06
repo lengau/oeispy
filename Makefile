@@ -4,8 +4,8 @@
 help:
 	@echo "Available targets:"
 	@echo "  make install     - Install dependencies using uv"
-	@echo "  make lint        - Run all linters (ruff, mypy, yamllint)"
-	@echo "  make format      - Auto-format all files (black, isort, ruff)"
+	@echo "  make lint        - Run all linters (ruff, mypy, yamllint, tombi)"
+	@echo "  make format      - Auto-format all files (black, isort, ruff, tombi)"
 	@echo "  make check       - Run linters without making changes"
 	@echo "  make test        - Run tests with pytest"
 	@echo "  make clean       - Remove build artifacts and cache files"
@@ -16,7 +16,7 @@ setup:
 	uv sync --all-extras
 
 # Linting targets
-lint: lint-python lint-yaml
+lint: lint-python lint-yaml lint-toml
 
 lint-python:
 	@echo "Running ruff linter..."
@@ -29,7 +29,7 @@ lint-yaml:
 	uv run yamllint .github/
 
 # Formatting targets
-format: format-python
+format: format-python format-toml
 
 format-python:
 	@echo "Sorting imports with isort..."
@@ -39,8 +39,12 @@ format-python:
 	@echo "Auto-fixing with ruff..."
 	uv run ruff check --fix oeispy/ tests/
 
+format-toml:
+	@echo "Formatting TOML files with tombi..."
+	uv run tombi format pyproject.toml
+
 # Check without modifications (for CI)
-check: check-python check-yaml
+check: check-python check-yaml check-toml
 
 check-python:
 	@echo "Checking Python formatting..."
@@ -55,6 +59,14 @@ check-python:
 check-yaml:
 	@echo "Checking YAML files..."
 	uv run yamllint .github/
+
+lint-toml:
+	@echo "Checking TOML files with tombi..."
+	uv run tombi check pyproject.toml
+
+check-toml:
+	@echo "Checking TOML formatting..."
+	uv run tombi check pyproject.toml
 
 # Testing
 test:
