@@ -155,3 +155,4 @@ test/data/__pycache__/
 test/generators/__pycache__/
 test/getters/__pycache__/
 .idea/
+.vscode/settings.json
