@@ -4,12 +4,13 @@ All functions in GETTERS take a single integer argument and return a single
 integer. The prototype from typing would be:
 Callable[[int], int]
 
-If a getter function is retrieved from the OEIS website, it should be in 
+If a getter function is retrieved from the OEIS website, it should be in
 `from_site.py`.
 """
+
 import typing
 
-__all__ = ['GETTERS']
+__all__ = ["GETTERS"]
 
 GETTERS: typing.Dict[int, typing.Callable[[int], int]] = {
     4: lambda _: 0,

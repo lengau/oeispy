@@ -4,9 +4,9 @@ import requests
 
 from . import oeis
 
-__all__ = ['OEIS']
+__all__ = ["OEIS"]
 
-URI = 'https://oeis.org/search?fmt=json&q={term}'
+URI = "https://oeis.org/search?fmt=json&q={term}"
 
 
 class _OEIS:
@@ -33,9 +33,9 @@ class _OEIS:
             self.sequences[number] = oeis.A(number)
         return self.sequences[number]
 
-    def search(self,
-               term: typing.Union[str, typing.Sequence[int]]
-               ) -> typing.List[oeis.A]:
+    def search(
+        self, term: typing.Union[str, typing.Sequence[int]]
+    ) -> typing.List[oeis.A]:
         """Search for OEIS sequences using either a string or some ints.
 
         :param term: Either a string search term or a sequence of integers
@@ -52,11 +52,11 @@ class _OEIS:
         expansion of pi.
         """
         if isinstance(term[0], int):
-            term = ','.join(str(i) for i in term)
-        results = requests.get(URI.format(term=term)).json()['results']
+            term = ",".join(str(i) for i in term)
+        results = requests.get(URI.format(term=term)).json()["results"]
         if results is None:
             return []
-        return [oeis.A(r['number'], json=r) for r in results]
+        return [oeis.A(r["number"], json=r) for r in results]
 
 
 OEIS = _OEIS()

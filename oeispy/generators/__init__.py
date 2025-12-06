@@ -1,12 +1,10 @@
-"""Generators for OEIS sequences.
-"""
+"""Generators for OEIS sequences."""
 
 import itertools
 
-from . import from_site
-from . import generic
+from . import from_site, generic
 
-__all__ = ['GENERATORS']
+__all__ = ["GENERATORS"]
 
 GENERATORS = {
     # Note: It is only necessary to provide a generator when there is no getter
