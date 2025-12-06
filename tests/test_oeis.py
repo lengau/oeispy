@@ -4,7 +4,7 @@ from unittest import mock
 import pytest
 
 from oeispy import oeis
-from test import data
+from tests import data
 
 SEQUENCE_DEFINITIONS = (
     (2, data.a2_json),

@@ -14,6 +14,33 @@ automatically.)
 project to collect integer sequences in a single, useful format. Find out more
 at the [OEIS Welcome Page](https://oeis.org/wiki/Welcome).
 
+## Installation
+
+This project uses [uv](https://docs.astral.sh/uv/) for dependency management. To get started:
+
+```bash
+# Install uv if you haven't already
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install dependencies
+uv sync
+
+# Run tests
+uv run pytest
+```
+
+To use the package in your own project:
+
+```bash
+uv add oeispy
+```
+
+Or with pip:
+
+```bash
+pip install oeispy
+```
+
 ## Usage
 
 OEISPy is designed primarily to be used in an interactive Python shell or
