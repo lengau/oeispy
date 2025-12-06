@@ -38,7 +38,9 @@ class A:
         self.keywords = self.entry.get("keyword", "").split(",")
         self.offset = int(self.entry["offset"].split(",")[0])
         self.data = [int(i) for i in self.entry["data"].split(",")]
-        self.generator = generators.GENERATORS.get(number)
+        self.generator: typing.Union[
+            typing.Callable[[], typing.Iterator[int]], None
+        ] = generators.GENERATORS.get(number)
         self._get = getters.GETTERS.get(number)
         if self._get is not None and self.generator is None:
             self.generator = lambda: generators.generic.with_getter(
@@ -83,7 +85,7 @@ class A:
     def __str__(self) -> str:
         return f"A{self.number:06d}: {self.name}"
 
-    def __iter__(self) -> typing.Generator[int, None, None]:
+    def __iter__(self) -> typing.Iterator[int]:
         repr_ = repr(self)
         if self.generator is None:
             raise NotImplementedError(f"There is no generator for {repr_}.")

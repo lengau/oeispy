@@ -37,8 +37,7 @@ def palindromes():
     Examples: 0, 1, 2, ..., 9, 11, 22, 33, ..., 99, 101, 111, 121, ...
     """
     # Single digit palindromes: 0-9
-    for i in range(10):
-        yield i
+    yield from range(10)
 
     # Multi-digit palindromes
     # Generate by length: 2-digit, 3-digit, 4-digit, etc.

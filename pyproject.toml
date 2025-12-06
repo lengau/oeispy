@@ -38,6 +38,7 @@ dev-dependencies = [
     "isort>=5.13.0",
     "mypy>=1.8.0",
     "yamllint>=1.35.0",
+    "types-requests>=2.32.0.20241016",
 ]
 
 [tool.hatch.build.targets.wheel]

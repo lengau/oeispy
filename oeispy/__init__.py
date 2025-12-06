@@ -23,7 +23,7 @@ class _OEIS:
     """
 
     def __init__(self):
-        self.sequences = {}
+        self.sequences: typing.Dict[int, oeis.A] = {}
 
     def __call__(self, number: int) -> oeis.A:
         """Get an OEIS sequence by its sequence id.

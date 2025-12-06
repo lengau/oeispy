@@ -1,7 +1,5 @@
 """Generators for OEIS sequences."""
 
-import itertools
-
 from . import from_site, generic
 
 __all__ = ["GENERATORS"]
