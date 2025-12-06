@@ -13,4 +13,5 @@ GENERATORS = {
     # or the generator would be significantly more efficient than the getter.
     2: from_site.kolakoski,
     45: lambda: generic.lucas(0, 1),
+    2113: generic.palindromes,
 }
