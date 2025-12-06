@@ -1,0 +1,43 @@
+name: Lint
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --all-extras --dev
+
+      - name: Check Python formatting with black
+        run: uv run black --check oeispy/ tests/
+
+      - name: Check import sorting with isort
+        run: uv run isort --check-only oeispy/ tests/
+
+      - name: Lint Python with ruff
+        run: uv run ruff check oeispy/ tests/
+
+      - name: Type check with mypy
+        run: uv run mypy oeispy/
+
+      - name: Check TOML formatting with tombi
+        run: uv run tombi check pyproject.toml
+
+      - name: Lint YAML files with yamllint
+        run: uv run yamllint .github/
